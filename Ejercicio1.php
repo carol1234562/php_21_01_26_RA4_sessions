@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 //datos fijos 
 if (!isset($_SESSION['numbers'])) {
     //datos de nuestro array
@@ -22,15 +23,14 @@ if (isset($_POST['modify'])) {
 if (isset($_POST['average'])) {
     //array_sum= suma nuestros valores del array
     $average = array_sum($_SESSION['numbers'])
-        //obtenemos cantidad de elementos del array
+    //obtenemos cantidad de elementos del array
         / count($_SESSION['numbers']);
-    //luego calculamos promedio 
+        //luego calculamos promedio 
 }
 ?>
 
 
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <title>Modify array saved in session</title>
@@ -38,14 +38,11 @@ if (isset($_POST['average'])) {
 
 <body>
     <h1>Modify array saved in session</h1>
-
     <form action="Ejercicio1.php" method="post">
         <label for="position"> Position to modify</label>
         <select name="position" id="position">
-            <?php
-            for ($i = 0; $i < count(value: $_SESSION['numbers']); $i++) {
-            ?>
-                <option value=" <?php echo $i; ?>">
+            <?php for ($i = 0; $i < count(value: $_SESSION['numbers']); $i++) { ?>
+                <option value="<?php echo $i; ?>">
                     <?php echo $i; ?> </option>
             <?php
             } ?>
@@ -56,22 +53,17 @@ if (isset($_POST['average'])) {
 
         <input type="number" id="value" name="value">
         <br><br>
-        /*botones*/
+
         <input type="submit" value="Modify" name="modify">
         <input type="submit" value="Average" name="average">
         <input type="reset" value="reset">
     </form>
 
     <p>Current array:
-        <?php
-        echo implode(
-            ', ',
-            $_SESSION['numbers']
-        ); ?>
+        <?php echo implode(', ', $_SESSION['numbers']); ?>
     </p>
     <?php
     if (isset($average)) {
-        //printa average 
         echo "<p> Average: " . $average . "</p>";
     } ?>
 
