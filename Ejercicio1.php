@@ -66,15 +66,14 @@ if (isset($_POST['reset'])) {
         <input type="submit" value="Modify" name="modify">
         <input type="submit" value="Average" name="average">
         <input type="submit" value="Reset" name="reset">
-    </form>
 
-    <p>Current array:
-        <?php echo implode(', ', $_SESSION['numbers']); ?>
-    </p>
-    <?php
-    if (isset($average)) {
-        echo "<p> Average: " . $average . "</p>";
-    } ?>
+        <p>Current array:
+            <?php echo implode(', ', $_SESSION['numbers']); ?>
+        </p>
+        <?php
+        if (isset($average)) {
+            echo "<p> Average: " . $average . "</p>";
+        } ?>
 
 </body>
 
